@@ -1,0 +1,39 @@
+@extends('recycling_product.layout')
+@section('content')
+<div class="container"><br/><br/>
+    <div class="row">
+        <div class="col-lg-10">
+            <h2>Laravel 9 Upload Image and Display</h2>
+        </div>
+        <div class="col-lg-2">
+            <a href="{{ url('/member/create') }}" class="btn btn-success" title="Add New Contact">
+                Add New Member
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped" id="membersTable">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Quantity</th>
+                <th>Estimated Price</th> 
+                <th>Product Image</th> 
+            </tr>    
+        </thead>
+        <tbody>
+            @foreach($members as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->product_name }}</td>
+                    <td>{{ $item->product_quantity }}</td>
+                    <td>{{ $item->estimated_price }}</td>
+                    <td>
+                        <img src="{{ asset($item->photo) }}" width= '60' height='60' class="img img-responsive" />
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection
